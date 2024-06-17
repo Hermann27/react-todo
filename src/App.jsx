@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-// 1- Above this App() function, I created an empty Array and store it in a variable named todoList.
+// 1- Above this App() function, I created an array with some initial data and store it in a variable named todoList.
 const todoList =[
   {id: 1,title:"Complete assignment"},
   {id: 2,title:"Attend at least one mentor session weekly"},
