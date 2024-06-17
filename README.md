@@ -21,6 +21,6 @@
   3. Inside your unordered list, insert a JavaScript expression
       hint: {}
   4. Inside the JavaScript expression, map over your todoList array
-  5. For each Object in the Array, return a list item (<li>) with the following:
+  5. For each Object in the Array, return a list item (li) with the following:
       key attribute with value of id property
       inner text content with value of title property
