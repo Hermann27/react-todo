@@ -1,6 +1,6 @@
 # All about this project 
 
-# -------------------------------------(Step by Step)Lesson 1-1------------------------------------------------------------------
+# --------------(Step by Step)Lesson 1-1--------------
 # Commit project and create working branch
   1. Commit the installed project
   2. Push changes to GitHub repo
@@ -27,7 +27,7 @@
       key attribute with value of id property
       inner text content with value of title property
 
-# -------------------------------------(Step by Step) Lesson 1-2 ------------------------------------------------------------------
+# --------------(Step by Step) Lesson 1-2 --------------
 
 # Move List Item into New "Todo List Item" Component
   1. Inside /src directory, create a new file called TodoListItem.jsx
