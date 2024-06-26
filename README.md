@@ -1,4 +1,7 @@
 # All about this project 
+
+#  ---------------------- (Step by Setp) Lesson 1-1 ----------------------
+
 # Commit project and create working branch
   1. Commit the installed project
   2. Push changes to GitHub repo
@@ -24,3 +27,12 @@
   5. For each Object in the Array, return a list item (li) with the following:
       key attribute with value of id property
       inner text content with value of title property
+
+#  ---------------------- (Step by Setp) Lesson 1-2 ----------------------
+
+# Move List into New "Todo List" Component
+![alt text](image.png)
+
+# Create "Add Todo Form" Component
+
+![alt text](image-1.png)
