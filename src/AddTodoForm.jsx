@@ -6,9 +6,10 @@ function AddTodoForm({onAddTodo}){
         const formData = new FormData(event.currentTarget);
         const todoTitle = formData.get('title');
         onAddTodo(todoTitle);// Call the passed function to add the todo
-        console.log(todoTitle);
+        //console.log(todoTitle);
         event.target.reset(); // This action will reset the form
-      }
+
+    }
     return(
         <form onSubmit={handleAddTodo}>
             <label htmlFor="Title">Title :</label>
