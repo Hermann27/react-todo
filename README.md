@@ -1,6 +1,6 @@
 # All about this project 
 
-#  ---------------------- (Step by Setp) Lesson 1-1 ----------------------
+#  ---------------------- (Step by Setp) Lesson 1-2 ----------------------
 
 # Commit project and create working branch
   1. Commit the installed project
@@ -28,7 +28,7 @@
       key attribute with value of id property
       inner text content with value of title property
 
-#  ---------------------- (Step by Setp) Lesson 1-2 ----------------------
+#  ---------------------- (Step by Setp) Lesson 1-3 ----------------------
 
 # Move List into New "Todo List" Component
 ![alt text](image.png)
@@ -36,3 +36,24 @@
 # Create "Add Todo Form" Component
 
 ![alt text](image-1.png)
+
+#  ---------------------- (Step by Setp) Lesson 1-4 ----------------------
+#     Coding Assignment
+##  This lesson will teach you the following:
+
+    1. Lifting State
+    2. Controlled Components
+    3. Props handling
+
+# Move Todo List into State
+![alt text](image-2.png)
+
+# Control "Add Todo" Input
+![alt text](image-3.png)
+
+# Add New Todo to List
+![alt text](image-4.png)
+
+# Destructure Props
+![alt text](image-5.png)
+
