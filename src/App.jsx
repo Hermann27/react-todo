@@ -13,8 +13,8 @@ function App() {
     <>
       <div>
           <h1>Todo List</h1>
-           <TodoList todoList ={todoList}/> 
            <AddTodoForm onAddTodo={addTodo}/>
+           <TodoList todoList ={todoList}/> 
       </div>     
     </>
   );
