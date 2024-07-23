@@ -57,3 +57,12 @@
 # Destructure Props
 ![alt text](image-5.png)
 
+#  ---------------------- (Step by Setp) Lesson 1-5 ----------------------
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+![alt text](image-8.png)
+![alt text](image-9.png)
+
+## Here is the output after completion!
+![alt text](outputlesson1-5.png)
