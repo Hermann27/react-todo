@@ -17,8 +17,9 @@ function App() {
   const addTodo =(newTodo) =>{
     setTodoList([...todoList,newTodo]);
   };
-   return (
-    <>
+  { /*used the Fragments <> </> inside the return function*/ }
+   return (  
+    <> 
       <div>
           <h1>Todo List</h1>
            <AddTodoForm onAddTodo={addTodo}/>
@@ -28,4 +29,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
