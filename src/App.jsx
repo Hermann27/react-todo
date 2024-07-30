@@ -17,13 +17,21 @@ function App() {
   const addTodo =(newTodo) =>{
     setTodoList([...todoList,newTodo]);
   };
+
+  const removeTodo =(id)=>{
+    const newTodoList = todoList.filter(
+      (todo)=> id !== todo.id
+    );
+    setTodoList(newTodoList);
+  }
+
   { /*used the Fragments <> </> inside the return function*/ }
    return (  
     <> 
       <div>
           <h1>Todo List</h1>
            <AddTodoForm onAddTodo={addTodo}/>
-           <TodoList todoList ={todoList}/> 
+           <TodoList todoList ={todoList} onRemoveTodo={removeTodo}/> 
       </div>     
     </>
   );

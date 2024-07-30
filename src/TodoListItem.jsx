@@ -1,6 +1,9 @@
-function TodoListItem(props){
+function TodoListItem({id, title,onRemoveTodo}){
         return(
-                <li>{props.todo.title}</li>              
+                <li>               
+                        {title}
+                        <button type="button" onClick={() => onRemoveTodo(id)}>Remove</button>
+                </li>              
         ); 
 }
 export default TodoListItem;
