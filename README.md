@@ -1,6 +1,6 @@
 # All about this project 
 
-#  ---------------------- (Step by Setp) Lesson 1-2 ----------------------
+#  ------------ (Step by Setp) Lesson 1-2 ------------
 
 # Commit project and create working branch
   1. Commit the installed project
@@ -28,7 +28,7 @@
       key attribute with value of id property
       inner text content with value of title property
 
-#  ---------------------- (Step by Setp) Lesson 1-3 ----------------------
+#  ------------ (Step by Setp) Lesson 1-3 ------------
 
 # Move List into New "Todo List" Component
 ![alt text](image.png)
@@ -37,7 +37,7 @@
 
 ![alt text](image-1.png)
 
-#  ---------------------- (Step by Setp) Lesson 1-4 ----------------------
+#  ------------ (Step by Setp) Lesson 1-4 ------------
 #     Coding Assignment
 ##  This lesson will teach you the following:
 
@@ -57,7 +57,7 @@
 # Destructure Props
 ![alt text](image-5.png)
 
-#  ---------------------- (Step by Setp) Lesson 1-5 ----------------------
+#  ------------ (Step by Setp) Lesson 1-5 ------------
 ![alt text](image-6.png)
 
 ![alt text](image-7.png)
@@ -66,3 +66,5 @@
 
 ## Here is the output after completion!
 ![alt text](outputlesson1-5.png)
+
+#  ------------ (Step by Setp) Lesson 1-6 ------------
