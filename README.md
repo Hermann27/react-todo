@@ -68,3 +68,5 @@
 ![alt text](outputlesson1-5.png)
 
 #  ------------ (Step by Setp) Lesson 1-6 ------------
+
+![alt text](image-10.png)
