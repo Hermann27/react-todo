@@ -31,11 +31,11 @@
 #  ------------ (Step by Setp) Lesson 1-3 ------------
 
 # Move List into New "Todo List" Component
-![alt text](image.png)
+![alt text](./src/README_images/image.png)
 
 # Create "Add Todo Form" Component
 
-![alt text](image-1.png)
+![alt text](./src/README_images/image-1.png)
 
 #  ------------ (Step by Setp) Lesson 1-4 ------------
 #     Coding Assignment
@@ -46,34 +46,31 @@
     3. Props handling
 
 # Move Todo List into State
-![alt text](image-2.png)
+![alt text](./src/README_images/image-2.png)
 
 # Control "Add Todo" Input
-![alt text](image-3.png)
+![alt text](./src/README_images/image-3.png)
 
 # Add New Todo to List
-![alt text](image-4.png)
+![alt text](./src/README_images/image-4.png)
 
 # Destructure Props
-![alt text](image-5.png)
+![alt text](./src/README_images/image-5.png)
 
 #  ------------ (Step by Setp) Lesson 1-5 ------------
-![alt text](image-6.png)
+![alt text](./src/README_images/image-6.png)
 
-![alt text](image-7.png)
-![alt text](image-8.png)
-![alt text](image-9.png)
+![alt text](./src/README_images/image-7.png)
+![alt text](./src/README_images/image-8.png)
+![alt text](./src/README_images/image-9.png)
 
 ## Here is the output after completion!
-![alt text](outputlesson1-5.png)
+![alt text](./src/README_images/outputlesson1-5.png)
 
 #  ------------ (Step by Setp) Lesson 1-6 ------------
 
-![alt text](image-10.png)
-![alt text](image-11.png)
-![alt text][def]
-![alt text](image-13.png)
-![alt text](image-14.png)
-
-
-[def]: image-12.png
+![alt text](./src/README_images/image-10.png)
+![alt text](./src/README_images/image-11.png)
+![alt text](./src/README_images/image-12.png)
+![alt text](./src/README_images/image-13.png)
+![alt text](./src/README_images/image-14.png)
