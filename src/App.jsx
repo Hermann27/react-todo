@@ -25,15 +25,13 @@ function App() {
     setTodoList(newTodoList);
   }
 
-  { /*used the Fragments <> </> inside the return function*/ }
    return (  
-    <> 
-      <div>
+     /*used the Fragments <> </> inside the return function*/ 
+        <> 
           <h1>Todo List</h1>
-           <AddTodoForm onAddTodo={addTodo}/>
-           <TodoList todoList ={todoList} onRemoveTodo={removeTodo}/> 
-      </div>     
-    </>
+          <AddTodoForm onAddTodo={addTodo}/>
+          <TodoList todoList ={todoList} onRemoveTodo={removeTodo}/>    
+        </>
   );
 }
 
