@@ -1,27 +1,38 @@
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+const useSemiPersistentState =()=>{
+  const [todoList ,setTodoList ] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
+  
+  React.useEffect(()=>{
+    localStorage.setItem('savedTodoList',JSON.stringify(todoList))
+  },[todoList]);
+  return [todoList ,setTodoList];
+};
 
 function App() {
+  const [todoList ,setTodoList ] = useSemiPersistentState();
 
-  const [newTodo, setnewTodo] = useState([]);
+  const addTodo =(newTodo) =>{
+    setTodoList([...todoList,newTodo]);
+  };
 
-  const SetNewTodo =(todoTitle) =>{
-    setnewTodo(todoTitle);   
+  const removeTodo =(id)=>{
+    const newTodoList = todoList.filter(
+      (todo)=> id !== todo.id
+    );
+    setTodoList(newTodoList);
   }
 
-   return (
-    <>
-      <div>
+   return (  
+     /*used the Fragments <> </> inside the return function*/ 
+        <> 
           <h1>Todo List</h1>
-           <TodoList/> 
-           <AddTodoForm onAddTodo={SetNewTodo}/>
-           <p>
-            {newTodo}
-          </p>
-      </div>     
-    </>
+          <AddTodoForm onAddTodo={addTodo}/>
+          <TodoList todoList ={todoList} onRemoveTodo={removeTodo}/>    
+        </>
   );
 }
 
-export default App
+export default App;
