@@ -4,12 +4,29 @@ import React, { useState } from 'react';
 
 
 function App() {
-  const [todoList ,setTodoList ] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
+  const [todoList ,setTodoList ] = useState([]);
+  const [isLoading,setisLoading] =useState(true);//my new loading state
+  //JSON.parse(localStorage.getItem('savedTodoList')) || 
+  
   
   React.useEffect(()=>{
-    localStorage.setItem('savedTodoList',JSON.stringify(todoList))
-  },[todoList]);
-  
+    new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+        resolve({data:{todoList:JSON.parse(localStorage.getItem('savedTodoList')) || []}})
+      },2000);
+    })
+    .then((result)=>{
+      setTodoList(result.data.todoList);
+      setisLoading(false);
+    })
+  })
+
+  React.useEffect(()=>{
+    if(!isLoading){
+      localStorage.setItem('savedTodoList',JSON.stringify(todoList))
+    }
+  },[todoList,isLoading]);
+
   const addTodo =(newTodo) =>{
     setTodoList([...todoList,newTodo]);
   };
