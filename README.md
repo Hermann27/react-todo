@@ -74,3 +74,9 @@
 ![alt text](./src/README_images/image-12.png)
 ![alt text](./src/README_images/image-13.png)
 ![alt text](./src/README_images/image-14.png)
+
+#  ------------ (Step by Setp) Lesson 1-7 ------------
+![alt text](./src/README_images/remove-custom-hook.png)
+![alt text](./src/README_images/Async-loadting-state.png)
+![alt text](./src/README_images/loadting-state-condtion.png)
+![alt text](./src/README_images/loadting-state-condtion2.png)
