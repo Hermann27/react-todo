@@ -11,6 +11,10 @@ function AddTodoForm({onAddTodo}){
 
     const handleAddTodo =(event) =>{
         event.preventDefault(); //this line prevent the default form submission behavior
+        if (todoTitle.trim() === '') { // Check if the input is an empty string.
+            alert('Please Enter a new todo item.'); // Alert the user if the input is empty.
+            return; // Exit the function to prevent adding an empty todo.
+          }
         onAddTodo({title:todoTitle,id:Date.now()});// update the onAddTodo callback prop to pass an Object instead of a String; Object should have the following properties{title:value,id:value}
         setTodoTitle(''); // Reseted the todoTitle state.
     }
