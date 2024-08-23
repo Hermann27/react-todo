@@ -80,3 +80,11 @@
 ![alt text](./src/README_images/Async-loadting-state.png)
 ![alt text](./src/README_images/loadting-state-condtion.png)
 ![alt text](./src/README_images/loadting-state-condtion2.png)
+
+#  ------------ (Step by Setp) Lesson 1-8 ------------
+![alt text](./src/README_images/setupAirTable.png)
+![alt text](./src/README_images/Generate-Airtable-API-Token.png)
+![alt text](./src/README_images/Connect-to-Airtable-API.png)
+![alt text](./src/README_images/Fetch-Data-from-Airtable.png)
+![alt text](./src/README_images/Fetch-Data-from-Airtable2.png)
+![alt text](./src/README_images/Fetch-Data-from-Airtable3.png)
