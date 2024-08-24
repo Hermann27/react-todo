@@ -15,7 +15,7 @@ function AddTodoForm({onAddTodo}){
             alert('Please Enter a new todo item.'); // Alert the user if the input is empty.
             return; // Exit the function to prevent adding an empty todo.
           }
-        onAddTodo({title:todoTitle,id:Date.now()});// update the onAddTodo callback prop to pass an Object instead of a String; Object should have the following properties{title:value,id:value}
+        onAddTodo({title:todoTitle,completedAt:Date.now()});// update the onAddTodo callback prop to pass an Object instead of a String; Object should have the following properties{title:value,id:value}
         setTodoTitle(''); // Reseted the todoTitle state.
     }
     return(
