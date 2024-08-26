@@ -1,0 +1,11 @@
+.todo-table {
+    width: 40%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .todo-table th, .todo-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
