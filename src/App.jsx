@@ -1,10 +1,12 @@
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import React, { useState } from "react";
+
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true); //my new loading state
   const [message, setMessage] = useState("");
+
   const fetchData = async () => {
     // Define the fetchData function
     const options = {
@@ -32,15 +34,11 @@ function App() {
       console.error(error.message);
     }
   };
+
   React.useEffect(() => {
     fetchData();
   }, []);
-  React.useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => setMessage(""), 2000);
-      return () => clearTimeout(timer); // Clean up the timer
-    }
-  }, [message]);
+
   const addTodo = async (newTodo) => {
     const formattedCompletedAt = new Date(newTodo.completedAt)
       .toISOString()
@@ -81,6 +79,7 @@ function App() {
       setMessage(`Error adding todo: ${error.message}`); // Set error message
     }
   };
+
   const removeTodo = async (id) => {
     // Define the DELETE request options
     const options = {
@@ -106,6 +105,7 @@ function App() {
       setMessage(`Error removing todo: ${error.message}`); // Set error message
     }
   };
+
   return (
     /*used the Fragments <> </> inside the return function*/
     <>
@@ -115,7 +115,7 @@ function App() {
         <>
           <center>
             <h1>Todo List</h1>
-            {message && <p>{message}</p>}          
+            {message && <p>{message}</p>}
             {/* Display success or error message */}
             <AddTodoForm onAddTodo={addTodo} />
             <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
@@ -125,4 +125,5 @@ function App() {
     </>
   );
 }
+
 export default App;
