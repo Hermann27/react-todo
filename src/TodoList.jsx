@@ -4,7 +4,7 @@ import "./App.css";
 function TodoList({ todoList, onRemoveTodo }) {
   return (
     <>
-    <br/>
+      <br />
       <table className="todo-table">
         <thead>
           <tr>
@@ -13,14 +13,14 @@ function TodoList({ todoList, onRemoveTodo }) {
           </tr>
         </thead>
         <tbody>
-        {todoList.map(({ id, title }) => (
-          <TodoListItem
-            key={id}
-            id={id}
-            title={title}
-            onRemoveTodo={onRemoveTodo}
-          />
-        ))}
+          {todoList.map(({ id, title }) => (
+            <TodoListItem
+              key={id}
+              id={id}
+              title={title}
+              onRemoveTodo={onRemoveTodo}
+            />
+          ))}
         </tbody>
       </table>
     </>

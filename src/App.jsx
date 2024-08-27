@@ -5,7 +5,6 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true); //my new loading state
   const [message, setMessage] = useState("");
-
   const fetchData = async () => {
     // Define the fetchData function
     const options = {
@@ -35,14 +34,13 @@ function App() {
   };
   React.useEffect(() => {
     fetchData();
+  }, []);
+  React.useEffect(() => {
     if (message) {
-      const timer = setTimeout(() => {
-        setMessage(""); // Clear the message after 3 seconds
-      }, 2000);
-      return () => clearTimeout(timer); // Cleanup the timer if the component unmounts or message changes
+      const timer = setTimeout(() => setMessage(""), 2000);
+      return () => clearTimeout(timer); // Clean up the timer
     }
   }, [message]);
-
   const addTodo = async (newTodo) => {
     const formattedCompletedAt = new Date(newTodo.completedAt)
       .toISOString()
@@ -76,7 +74,7 @@ function App() {
         completedAt: data.fields.completedAt,
         id: data.id, // Airtable returns the ID of the newly created record
       };
-      setTodoList([...todoList, addedTodo]);   // updated /added my todolist state
+      setTodoList([...todoList, addedTodo]); // updated /added my todolist state
       setMessage("Todo added successfully!"); // Set success message
     } catch (error) {
       //console.error("Error adding todo:", error.message);
@@ -117,7 +115,7 @@ function App() {
         <>
           <center>
             <h1>Todo List</h1>
-            {message && <p>{message}</p>}
+            {message && <p>{message}</p>}          
             {/* Display success or error message */}
             <AddTodoForm onAddTodo={addTodo} />
             <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
@@ -127,5 +125,4 @@ function App() {
     </>
   );
 }
-
 export default App;
