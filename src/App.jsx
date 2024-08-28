@@ -36,6 +36,13 @@ function App() {
     fetchData();
   }, []);
 
+  React.useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setMessage(""), 2000); // Clear message after 3 seconds
+      return () => clearTimeout(timer); // Cleanup timer on unmount
+    }
+  }, [message]);
+
   const addTodo = async (newTodo) => {
     const formattedCompletedAt = new Date(newTodo.completedAt)
       .toISOString()

@@ -1,0 +1,279 @@
+[33mcommit bc93bdb79ff8479fbe2664bdfbdf5655d777d28e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlesson_1-8[m[33m, [m[1;31morigin_assign/lesson_1-8[m[33m)[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Aug 27 09:36:40 2024 -0500
+
+    follow line spacing throughout the code best practices
+
+[33mcommit 1c038d7e7f264f0ddd45f42a39c20558ecc6f37a[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Aug 26 08:41:58 2024 -0500
+
+    Added a POST and DELETE feature to add and delete todos to the Airtable API. I also made some simple style and reoganized my works in the Table.
+
+[33mcommit 8a37e00d03267daff85770e2c2937d553c7ac49a[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Sat Aug 24 16:15:49 2024 -0500
+
+    reformating the code and removed redundant code.
+
+[33mcommit 8d42c0f034389c5a2e43865f4b9dca6f328f3143[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Fri Aug 23 14:06:45 2024 -0500
+
+    Updated ReadMe file with 1.8 lesson instructions.
+
+[33mcommit ed9ba9ba29f35f382daf3c5dd0f99d88c7ebdd4b[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Fri Aug 23 13:43:26 2024 -0500
+
+    Implemetated a fetchedata function which will fetched data from airtable using API.
+
+[33mcommit bd1c60b8a71dee1c1cc56af997b6ff1200648252[m[33m ([m[1;31morigin_assign/main[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 95736c2 8f86d05
+Author: Hermann67 <63571322+Hermann27@users.noreply.github.com>
+Date:   Wed Aug 14 16:45:45 2024 -0500
+
+    Merge pull request #8 from Hermann27/lesson_1-7
+    
+    Lesson 1 7
+
+[33mcommit 8f86d05762767f2ef990301ec6408bdd71f8e80e[m[33m ([m[1;31morigin_assign/lesson_1-7[m[33m, [m[1;32mlesson_1-7[m[33m)[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Aug 12 14:12:29 2024 -0500
+
+    Updated ReadMe file with the 1.7 lesson assignment
+
+[33mcommit 975757b4f30381c0c358cd6520ad68f8a47a484c[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Aug 12 13:56:57 2024 -0500
+
+    Added condition on the input todo item to check if the textbox is not empty before add the todo to the list
+
+[33mcommit 4d798f6657e1b445e846de0784a657d2d1167c74[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Aug 12 13:40:41 2024 -0500
+
+    Implemented conditional Loading Indicator.
+
+[33mcommit e7b57b22958d15b00e8a58f9432ed114fe3c9a1a[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Aug 12 13:01:53 2024 -0500
+
+    Async and Loading State implementation on this commit
+
+[33mcommit 3986805f2bd19a9ce0d2f5868d7d00e0ec095e22[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Aug 12 11:52:34 2024 -0500
+
+    Remove Custom Hook
+
+[33mcommit 95736c24ea12875e0899274d949c0454a80f8cdf[m
+Merge: 8aa7e46 ae6040c
+Author: Hermann67 <63571322+Hermann27@users.noreply.github.com>
+Date:   Sun Aug 4 20:35:34 2024 -0500
+
+    Merge pull request #7 from Hermann27/lesson_1-6
+    
+    Lesson 1 6
+
+[33mcommit ae6040c9858d8ccea48fef0912450ffc1047cda4[m[33m ([m[1;31morigin_assign/lesson_1-6[m[33m, [m[1;32mlesson_1-6[m[33m)[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Wed Jul 31 10:21:38 2024 -0500
+
+    Organize readme images folder
+
+[33mcommit 3f3c9912bb7767548f74749324e4800d9ae416b6[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Wed Jul 31 10:08:02 2024 -0500
+
+    Create a folder for the readme screen short images
+
+[33mcommit 0b0001d8dd53b4e33bf658cb2355e54cbf010ef4[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Wed Jul 31 09:55:33 2024 -0500
+
+    I have used prettier to well format the code.
+
+[33mcommit 2d849ffb19d3d2be9b10b33781e1749ce8bc7eb7[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Wed Jul 31 09:53:36 2024 -0500
+
+     I have removed the unnecessary <div> wrapper and left only the React fragments(<> </>).
+
+[33mcommit 336c31e1467bae1cf0e39d6220482091ac349a97[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Wed Jul 31 09:48:38 2024 -0500
+
+     formatting the TodoListItem code a bit cleaner and easier to read.
+
+[33mcommit 9370c6b0a523492cf35613ece74c594e9440f82e[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 30 09:48:31 2024 -0500
+
+    README file update
+
+[33mcommit b714b878e54e529cf340878833b74a8fa5a578b2[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 30 09:01:44 2024 -0500
+
+    1.6 ReadMe updated
+
+[33mcommit 35a9d7e746c4608f2fb8973f4011a5532512e249[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 30 08:56:53 2024 -0500
+
+    Updated README File
+
+[33mcommit 62ea85ecfcb65830e55eb3308580b6fd3bd7b3ab[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 30 08:53:15 2024 -0500
+
+    Implementation of : 1-Create Reusable Input with Label Component
+    2- Refactor Input with Label to use Component Composition
+    
+    3- Add Auto-Focus to Input
+    
+    4- Add "Remove" Button to List Items
+
+[33mcommit 4d54f1c1d1156ac67cd0d4d0e883b5fe9325db3b[m[33m ([m[1;31morigin_assign/lesson_1_5[m[33m, [m[1;31morigin/lesson_1_5[m[33m, [m[1;32mlesson_1_5[m[33m)[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 23 14:04:00 2024 -0500
+
+    ReadMe has been updated to inculde lesson 1.5 setps.
+
+[33mcommit fc5a2f259768e5a97a0142f714976d834bdb8f2c[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 23 13:56:00 2024 -0500
+
+    Implemented Fragment
+
+[33mcommit 310d91dde5bc0aefbe28da2208f397a5aae1b933[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 23 12:05:29 2024 -0500
+
+    Create Custom Hook
+
+[33mcommit 621afa9c1aa3cad072110fffbb706f60e85aadcc[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 23 11:51:57 2024 -0500
+
+    Save Todo List in Storage
+
+[33mcommit f407edf555ffd5c9053a8c8ef9f1dd8e3769bda8[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 23 11:13:32 2024 -0500
+
+    refactored the app
+
+[33mcommit 4c1a6b3232d1cc6d43b2c5e34f4ba079a0e283fb[m[33m ([m[1;31morigin_assign/lesson_1_4[m[33m, [m[1;31morigin/lesson_1_4[m[33m, [m[1;32mlesson_1_4[m[33m)[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Tue Jul 16 13:13:08 2024 -0500
+
+    Implementation of lifting state, controlled components and props handling
+
+[33mcommit 8aa7e461d11bb5a53ecd8726af8e508509b7cd33[m
+Merge: 6ba8c9c 237b7e9
+Author: Hermann67 <63571322+Hermann27@users.noreply.github.com>
+Date:   Mon Jul 8 09:15:51 2024 -0500
+
+    Merge pull request #4 from Hermann27/lesson-1_3
+    
+    Lesson 1 3
+
+[33mcommit 237b7e988e589e778d2a427fb3a2dcfb34a5e231[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Sun Jun 30 18:33:46 2024 -0500
+
+    clean up the code
+
+[33mcommit 79bda477a486532a2e03da3635376f066c2fee15[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Thu Jun 27 13:19:50 2024 -0500
+
+    callback implemented
+
+[33mcommit bab1617047da3d950d59be135594bec80e85501d[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Thu Jun 27 13:01:00 2024 -0500
+
+    refactory the
+
+[33mcommit ccfc6d70ddf558423ba69e647ef9f7dd29b2ae20[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Thu Jun 27 12:52:01 2024 -0500
+
+    Added Todo From Submit
+
+[33mcommit 804d3d071d02735c8b273dbb0fa15bf8a04204a5[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Thu Jun 27 12:07:31 2024 -0500
+
+    Implementation of the lesson 1-3
+
+[33mcommit 6ba8c9c349ce221651199051ea02d7be90625515[m
+Merge: 78018e4 0311eea
+Author: Hermann67 <63571322+Hermann27@users.noreply.github.com>
+Date:   Wed Jun 26 11:21:28 2024 -0500
+
+    Merge pull request #3 from Hermann27/lesson_1_2
+    
+    Lesson 1 2
+
+[33mcommit 0311eead29efaf55d8d4337893eb0683095338bc[m[33m ([m[1;31morigin_assign/lesson_1_2[m[33m)[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Sat Jun 22 01:46:06 2024 -0500
+
+     ReadMe has been Updated to add the lesson  1-2 setps
+
+[33mcommit 54454f9c3dabce8028ff48fb389f4217100474d6[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Sat Jun 22 01:40:24 2024 -0500
+
+    In this lesson 1-2, I have impleted these following : React Dom, Component Definition, Component instantiation and React components.
+
+[33mcommit 78018e4fc6905ee777f4ca3eb80bb24117a424af[m
+Merge: daa66bd 439272f
+Author: Hermann67 <63571322+Hermann27@users.noreply.github.com>
+Date:   Thu Jun 20 12:49:20 2024 -0500
+
+    Merge pull request #1 from Hermann27/lesson_1_1
+    
+    Lesson-1-1
+
+[33mcommit 439272f2ae4336b8c23915f9aa960ef561968ec3[m[33m ([m[1;31morigin_assign/lesson_1_1[m[33m)[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Jun 17 13:39:21 2024 -0500
+
+     added comment on App.jsx file
+
+[33mcommit 2dca9fb4f8f3416c6a3a9a0fc2f43295ad747ba7[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Jun 17 13:26:52 2024 -0500
+
+    Updated README.md File
+
+[33mcommit 6998cf21e43433baa45d27f6c07b8fa14a51fcb9[m
+Author: Hermann67 <63571322+Hermann27@users.noreply.github.com>
+Date:   Mon Jun 17 13:24:19 2024 -0500
+
+    Update README.md
+
+[33mcommit ba6bb8efbcc0b9ea03d59fdef545046112432035[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Thu Jun 13 13:32:59 2024 -0500
+
+    clean my index and app css files to remove all the style
+
+[33mcommit 79a9c9c43fd6d46a616dffcd5f484075305156a1[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Jun 10 13:16:53 2024 -0500
+
+    I cleaned up and added some code inside the App function on the App.jsx file
+    
+    I created a todoList array and initialized with three objects, each containing a id and a title
+
+[33mcommit daa66bd2e11d7413268c04bd00e66bfa2771f218[m
+Author: hdjoumdjeu <hermannpougoue1@gmail.com>
+Date:   Mon Jun 10 12:14:08 2024 -0500
+
+    I have used npm create vite@latest . -- --template react to create my start react-todo app
