@@ -1,50 +1,110 @@
-import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
-import React, { useState } from 'react';
+import TodoList from "./TodoList";
+import AddTodoForm from "./AddTodoForm";
+import React, { useState } from "react";
+
 function App() {
   const [todoList, setTodoList] = useState([]);
-  const [isLoading, setisLoading] = useState(true); //my new loading state
-  React.useEffect(() => {
-    //Loading delay with a Promise
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data: {
-            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || []
-          },
-        });
-      }, 2000);
-    }).then((result) => {
-      setTodoList(result.data.todoList);// updating the state with the fetchesd todolist
-      setisLoading(false);// here I am turn off the loading state
-    });
-  },[]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [message, setMessage] = useState("");
 
-  React.useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  const fetchData = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+    };
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      const data = await response.json();
+      const todos = data.records.map((record) => ({
+        title: record.fields.title,
+        id: record.id,
+      }));
+      setTodoList(todos);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error.message);
     }
-  }, [todoList, isLoading]);
-
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
   };
 
-  const removeTodo = (id) => {
-    const newTodoList = todoList.filter((todo) => id !== todo.id);
-    setTodoList(newTodoList);
+  React.useEffect(() => {
+    fetchData();
+  }, []);
+
+  const addTodo = async (newTodo) => {
+    const formattedCompletedAt = new Date(newTodo.completedAt)
+      .toISOString()
+      .split("T")[0];
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fields: {
+          title: newTodo.title,
+          completedAt: formattedCompletedAt,
+        },
+      }),
+    };
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      const data = await response.json();
+      const addedTodo = {
+        title: data.fields.title,
+        completedAt: data.fields.completedAt,
+        id: data.id,
+      };
+      setTodoList([...todoList, addedTodo]);
+      setMessage("Todo added successfully!");
+    } catch (error) {
+      setMessage(`Error adding todo: ${error.message}`);
+    }
+  };
+
+  const removeTodo = async (id) => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+    };
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`;
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      const newTodoList = todoList.filter((todo) => id !== todo.id);
+      setTodoList(newTodoList);
+      setMessage("Todo removed successfully!");
+    } catch (error) {
+      setMessage(`Error removing todo: ${error.message}`);
+    }
   };
 
   return (
-    /*used the Fragments <> </> inside the return function*/
     <>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <h1>Todo List</h1>
-          <AddTodoForm onAddTodo={addTodo} />
-          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+          <center>
+            <h1>Todo List</h1>
+            {message && <p>{message}</p>}
+            <AddTodoForm onAddTodo={addTodo} />
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+          </center>
         </>
       )}
     </>
