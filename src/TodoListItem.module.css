@@ -1,0 +1,49 @@
+.ListItem {
+  color: rgb(2, 1, 7);
+  font-family: "Arial", sans-serif;
+  background-color: #ffffff;
+}
+body {
+  background-color: antiquewhite;
+  color: rgb(14, 13, 13);
+  font-family: "Arial", sans-serif;
+}
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7269be;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  body {
+    font-size: 18px;
+  }
+}
