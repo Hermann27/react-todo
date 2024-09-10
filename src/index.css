@@ -1,0 +1,23 @@
+body {
+  background-color: antiquewhite;
+  color: rgb(14, 13, 13);
+  font-family: "Arial", sans-serif;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1201px) {
+  body {
+    font-size: 18px;
+  }
+}

@@ -2,9 +2,9 @@ import style from "./TodoListItem.module.css"; // Import the CSS module
 
 function TodoListItem({ id, title, onRemoveTodo }) {
   return (
-    <tr className={style.ListItem}>
-      <td>{title}</td>
-      <td>
+    <tr className={style.listItem}>
+      <td className={style.td}>{title}</td>
+      <td className={style.td}>
         <center>
           <button type="button" onClick={() => onRemoveTodo(id)}>
             Remove
