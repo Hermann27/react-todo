@@ -1,9 +1,14 @@
 body {
-  background-color: antiquewhite;
-  color: rgb(14, 13, 13);
   font-family: "Arial", sans-serif;
+  background-image: url("/pngtree-office-desktop.jpg");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
 }
-
+#root {
+  margin-right: 45%;
+  margin-bottom: auto;
+}
 @media (max-width: 768px) {
   body {
     font-size: 14px;

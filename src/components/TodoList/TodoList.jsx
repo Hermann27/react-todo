@@ -8,8 +8,8 @@ function TodoList({ todoList, onRemoveTodo }) {
       <table className={style.table}>
         <thead>
           <tr>
-            <th className="todo-table th">Title</th>
-            <th className="todo-table th">Actions</th>
+            <th>Title</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
