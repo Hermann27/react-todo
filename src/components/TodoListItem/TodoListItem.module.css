@@ -1,0 +1,27 @@
+.listItem {
+  color: rgb(2, 1, 7);
+  font-family: "Arial", sans-serif;
+  background-color: #ffffff;
+  width: 40%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+.tableCells {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7269be;
+}

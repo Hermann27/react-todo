@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import style from "./InputWithLabel.module.css"; // Import the CSS module
 
 function InputWithLabel({ todoTitle, handleTitleChange, children }) {
   const inputRef = useRef();
