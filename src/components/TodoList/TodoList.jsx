@@ -27,6 +27,7 @@ function TodoList({ todoList, onRemoveTodo }) {
     </>
   );
 }
+
 TodoList.propTypes = {
   todoList: PropTypes.arrayOf(
     PropTypes.shape({

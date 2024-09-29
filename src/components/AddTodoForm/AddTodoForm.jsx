@@ -10,9 +10,6 @@ function AddTodoForm({ onAddTodo }) {
     const newTodoTitle = event.target.value; //get the input value from tu user.
     setTodoTitle(newTodoTitle); // set that value to our setTodoTitle that will update the state of our variable todoTitle.
   };
-  AddTodoForm.propTypes = {
-    onAddTodo: PropTypes.func.isRequired,
-  };
 
   const handleAddTodo = (event) => {
     event.preventDefault(); //this line prevent the default form submission behavior
@@ -37,5 +34,9 @@ function AddTodoForm({ onAddTodo }) {
     </form>
   );
 }
+
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func.isRequired,
+};
 
 export default AddTodoForm;
