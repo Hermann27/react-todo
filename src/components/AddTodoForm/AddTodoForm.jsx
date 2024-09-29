@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputWithLabel from "../InputWithLabel/InputWithLabel";
 import style from "./AddTodoForm.module.css"; // Import the CSS module
+import PropTypes from "prop-types";
 
 function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = useState("");
@@ -8,6 +9,9 @@ function AddTodoForm({ onAddTodo }) {
   const handleTitleChange = (event) => {
     const newTodoTitle = event.target.value; //get the input value from tu user.
     setTodoTitle(newTodoTitle); // set that value to our setTodoTitle that will update the state of our variable todoTitle.
+  };
+  AddTodoForm.propTypes = {
+    onAddTodo: PropTypes.func.isRequired,
   };
 
   const handleAddTodo = (event) => {
