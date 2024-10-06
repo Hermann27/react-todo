@@ -1,13 +1,14 @@
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TodoList from "./components/TodoList/TodoList";
 import AddTodoForm from "./components/AddTodoForm/AddTodoForm";
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import style from "./styles/App.module.css";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
-  const [isAscending, setIsAscending] = useState(true); // New state for sort order
+  const [isAscending, setIsAscending] = useState(true);
 
   const fetchData = async () => {
     const options = {
@@ -24,54 +25,34 @@ function App() {
       }
       const data = await response.json();
 
-      // Sort the data based on the current sort order
-      data.records.sort((objectA, objectB) => {
-        /*  Sort by title 
-        const titleA = objectA.fields.title.toLowerCase();
-        const titleB = objectB.fields.title.toLowerCase();
-
-        // Ascending or Descending order based on state
-        if (isAscending) {
-          if (titleA < titleB) return -1;
-          if (titleA > titleB) return 1;
-          return 0;
-        } else {
-          if (titleA < titleB) return 1;
-          if (titleA > titleB) return -1;
-          return 0;
-        }*/
-        const timeA = new Date(objectA.createdTime).getTime();
-        const timeB = new Date(objectB.createdTime).getTime();
-
-        // Ascending or Descending order based on state
-        if (isAscending) {
-          return timeA - timeB; // Sort by ascending createdTime
-        } else {
-          return timeB - timeA; // Sort by descending createdTime
-        }
-      });
-
+      // Store todos from fetched data
       const todos = data.records.map((record) => ({
         title: record.fields.title,
+        createdTime: record.createdTime, // Include createdTime
         id: record.id,
       }));
-      setTodoList(todos); // I am updating my todo list state with sorted todos
-      setIsLoading(false); //I am stopping the loading with false value
+      setTodoList(todos);
+      setIsLoading(false);
     } catch (error) {
       console.error(error.message);
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
-  React.useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => setMessage(""), 2000); // Clear message after 3 seconds
-      return () => clearTimeout(timer); // Cleanup timer on unmount
-    }
-  }, [message]);
+  // Sort todoList when the order is toggled
+  const toggleSortOrder = () => {
+    setIsAscending((isAscending) => !isAscending);
+    setTodoList((todoList) =>
+      [...todoList].sort((objectA, objectB) => {
+        const timeA = new Date(objectA.createdTime).getTime();
+        const timeB = new Date(objectB.createdTime).getTime();
+        return isAscending ? timeB - timeA : timeA - timeB; // Switch between Ascending/Descending
+      })
+    );
+  };
 
   const addTodo = async (newTodo) => {
     const formattedCompletedAt = new Date(newTodo.completedAt)
@@ -100,17 +81,21 @@ function App() {
       const addedTodo = {
         title: data.fields.title,
         completedAt: data.fields.completedAt,
-        createdTime: data.createdTime, // Airtable returns the createdTime of the record
+        createdTime: data.createdTime, // Include createdTime
         id: data.id,
       };
-      const updatedList = [...todoList, addedTodo].sort((objectA, objectB) => {
-        const timeA = new Date(objectA.createdTime).getTime();
-        const timeB = new Date(objectB.createdTime).getTime();
-        return timeA - timeB; // Change this if you want descending order
+
+      // Automatically sort the list after adding a new todo
+      setTodoList((todoList) => {
+        const updatedList = [...todoList, addedTodo].sort(
+          (objectA, objectB) => {
+            const timeA = new Date(objectA.createdTime).getTime();
+            const timeB = new Date(objectB.createdTime).getTime();
+            return isAscending ? timeA - timeB : timeB - timeA;
+          }
+        );
+        return updatedList;
       });
-
-      setTodoList(updatedList);
-
       setMessage("Todo added successfully!");
     } catch (error) {
       setMessage(`Error adding todo: ${error.message}`);
@@ -137,14 +122,13 @@ function App() {
       setMessage(`Error removing todo: ${error.message}`);
     }
   };
-  // Toggle function to switch between ascending and descending
-  const toggleSortOrder = () => {
-    setIsAscending(!isAscending); // Toggle sort order
-  };
 
-  React.useEffect(() => {
-    fetchData();
-  }, [isAscending]); // Refetch data when sort order changes
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setMessage(""), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <BrowserRouter>
@@ -155,7 +139,7 @@ function App() {
             isLoading ? (
               <p>Loading...</p>
             ) : (
-              <center>
+              <div className={style.container}>
                 <h1>Todo List</h1>
                 {message && <p>{message}</p>}
                 <button onClick={toggleSortOrder}>
@@ -163,8 +147,9 @@ function App() {
                 </button>
                 <hr />
                 <AddTodoForm onAddTodo={addTodo} />
+                <br />
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-              </center>
+              </div>
             )
           }
         />

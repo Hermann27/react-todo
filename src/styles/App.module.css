@@ -1,0 +1,5 @@
+.container {
+  display: grid;
+  place-items: center; /* centers both horizontally and vertically */
+  padding: 84px;
+}

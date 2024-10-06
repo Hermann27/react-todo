@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
-    <>
+    <div className={style.tableContainer}>
       <br />
       <table className={style.table}>
         <thead>
@@ -24,7 +24,7 @@ function TodoList({ todoList, onRemoveTodo }) {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

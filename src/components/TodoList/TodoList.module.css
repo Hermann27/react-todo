@@ -1,1 +1,16 @@
+.tableContainer {
+  width: 700px; /* Set the width of the container */
+  height: 500px; /* Set the height of the container */
+  overflow: auto;
+}
 
+.table {
+  width: 100%; /* Ensure the table takes full width */
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 7px;
+  text-align: left;
+}
