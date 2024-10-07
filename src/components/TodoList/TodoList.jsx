@@ -1,9 +1,10 @@
 import TodoListItem from "../TodoListItem/TodoListItem";
 import style from "./TodoList.module.css";
+import PropTypes from "prop-types";
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
-    <>
+    <div className={style.tableContainer}>
       <br />
       <table className={style.table}>
         <thead>
@@ -23,8 +24,18 @@ function TodoList({ todoList, onRemoveTodo }) {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
+
+TodoList.propTypes = {
+  todoList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onRemoveTodo: PropTypes.func.isRequired,
+};
 
 export default TodoList;
