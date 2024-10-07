@@ -142,7 +142,10 @@ function App() {
               <div className={style.container}>
                 <h1>Todo List</h1>
                 {message && <p>{message}</p>}
-                <button onClick={toggleSortOrder}>
+                <button
+                  className={style.myCustomButton}
+                  onClick={toggleSortOrder}
+                >
                   Sort: {isAscending ? "Ascending" : "Descending"}
                 </button>
                 <hr />

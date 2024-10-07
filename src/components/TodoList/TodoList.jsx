@@ -1,6 +1,7 @@
 import TodoListItem from "../TodoListItem/TodoListItem";
 import style from "./TodoList.module.css";
 import PropTypes from "prop-types";
+import { format } from "date-fns";
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
@@ -20,7 +21,7 @@ function TodoList({ todoList, onRemoveTodo }) {
               key={id}
               id={id}
               title={title}
-              createdTime={createdTime}
+              createdTime={format(createdTime, "MMMM d, yyyy h:mm:ss a")}
               onRemoveTodo={onRemoveTodo}
             />
           ))}

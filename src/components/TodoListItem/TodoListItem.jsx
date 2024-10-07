@@ -7,8 +7,21 @@ function TodoListItem({ id, title, createdTime, onRemoveTodo }) {
       <td className={style.tableCells}>{title}</td>
       <td className={style.tableCells}>{createdTime}</td>
       <td className={style.tableCells}>
-        <button type="button" onClick={() => onRemoveTodo(id)}>
-          Remove
+        <button
+          className={style.myCustomButtonUpdate}
+          type="button"
+          //onClick={() => onRemoveTodo(id)}
+        >
+          Update
+        </button>
+      </td>
+      <td className={style.tableCells}>
+        <button
+          className={style.myCustomButtonDelete}
+          type="button"
+          onClick={() => onRemoveTodo(id)}
+        >
+          Delete
         </button>
       </td>
     </tr>
