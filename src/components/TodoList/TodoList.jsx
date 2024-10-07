@@ -10,15 +10,17 @@ function TodoList({ todoList, onRemoveTodo }) {
         <thead>
           <tr>
             <th>Title</th>
+            <th>Created Time</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {todoList.map(({ id, title }) => (
+          {todoList.map(({ id, title, createdTime }) => (
             <TodoListItem
               key={id}
               id={id}
               title={title}
+              createdTime={createdTime}
               onRemoveTodo={onRemoveTodo}
             />
           ))}
