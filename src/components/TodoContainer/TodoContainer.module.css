@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  place-items: center; /* centers both horizontally and vertically */
+  padding: 84px;
+}
+.myCustomButton {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}

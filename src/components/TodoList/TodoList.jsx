@@ -1,9 +1,21 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import TodoListItem from "../TodoListItem/TodoListItem";
 import style from "./TodoList.module.css";
 import PropTypes from "prop-types";
 import { format } from "date-fns";
 
-function TodoList({ todoList, onRemoveTodo }) {
+function TodoList({ todoList, onRemoveTodo, fetchData }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      fetchData("High"); // I am fetching the data on my AirTable with priority "High"
+    } else {
+      fetchData(); // I am fetching the data on my AirTable without any filter
+    }
+  }, [location, fetchData]);
+
   return (
     <table className={style.table}>
       <thead>

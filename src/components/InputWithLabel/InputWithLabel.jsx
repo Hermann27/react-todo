@@ -5,10 +5,10 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 function InputWithLabel({ todoTitle, handleTitleChange, children }) {
-  const inputRef = useRef();
+  const inputRef = useRef(null);
   useEffect(() => {
-    //inputRef.current.focus();
-  });
+    inputRef.current.focus();
+  }, []);
   return (
     <>
       <InputGroup className="mb-3">
