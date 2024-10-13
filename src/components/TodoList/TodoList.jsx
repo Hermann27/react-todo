@@ -5,29 +5,30 @@ import { format } from "date-fns";
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
-    <div className={style.tableContainer}>
-      <br />
-      <table className={style.table}>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Created Time</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todoList.map(({ id, title, createdTime }) => (
-            <TodoListItem
-              key={id}
-              id={id}
-              title={title}
-              createdTime={format(createdTime, "MMMM d, yyyy h:mm:ss a")}
-              onRemoveTodo={onRemoveTodo}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <table className={style.table}>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Tasks Details</th>
+          <th>Priority Level</th>
+          <th>Created Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {todoList.map(({ id, title, details, priority, createdTime }) => (
+          <TodoListItem
+            key={id}
+            id={id}
+            title={title}
+            details={details}
+            priority={priority}
+            createdTime={format(createdTime, "MMMM d, yyyy h:mm:ss a")}
+            onRemoveTodo={onRemoveTodo}
+          />
+        ))}
+      </tbody>
+    </table>
   );
 }
 

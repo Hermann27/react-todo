@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TodoList from "./components/TodoList/TodoList";
 import AddTodoForm from "./components/AddTodoForm/AddTodoForm";
 import style from "./styles/App.module.css";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,9 +28,12 @@ function App() {
       // Store todos from fetched data
       const todos = data.records.map((record) => ({
         title: record.fields.title,
-        createdTime: record.createdTime, // Include createdTime
+        details: record.fields.details, // Pass details
+        priority: record.fields.priority, // Pass priority
+        createdTime: record.fields.createdTime, // Include createdTime
         id: record.id,
       }));
+      console.log(todos);
       setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
@@ -67,6 +70,8 @@ function App() {
       body: JSON.stringify({
         fields: {
           title: newTodo.title,
+          details: newTodo.details, // Pass details
+          priority: newTodo.priority, // Pass priority
           completedAt: formattedCompletedAt,
         },
       }),
@@ -80,11 +85,12 @@ function App() {
       const data = await response.json();
       const addedTodo = {
         title: data.fields.title,
+        details: data.fields.details, // Pass details
+        priority: data.fields.priority, // Pass priority
         completedAt: data.fields.completedAt,
-        createdTime: data.createdTime, // Include createdTime
+        createdTime: data.fields.createdTime, // Include createdTime
         id: data.id,
       };
-
       // Automatically sort the list after adding a new todo
       setTodoList((todoList) => {
         const updatedList = [...todoList, addedTodo].sort(
