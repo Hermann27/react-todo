@@ -131,6 +131,10 @@ function TabContainer() {
   };
 
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     if (message) {
       const timer = setTimeout(() => setMessage(""), 2000);
       return () => clearTimeout(timer);
