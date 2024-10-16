@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import TodoList from "../TodoList/TodoList";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import style from "./TodoContainer.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-function TabContainer() {
+function TodoContainer() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
@@ -141,52 +139,24 @@ function TabContainer() {
     }
   }, [message]);
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              <div className={style.container}>
-                <h1>Todo List</h1>
-                {message && <p>{message}</p>}
-                <button
-                  className={style.myCustomButton}
-                  onClick={toggleSortOrder}
-                >
-                  Sort: {isAscending ? "Ascending" : "Descending"}
-                </button>
-                <hr />
-                <AddTodoForm onAddTodo={addTodo} />
-                <br />
-                <TodoList
-                  todoList={todoList}
-                  onRemoveTodo={removeTodo}
-                  fetchData={fetchData}
-                />
-              </div>
-            )
-          }
-        />
-        <Route
-          path="/TodoList-Activities"
-          element={
-            <TodoList
-              todoList={todoList}
-              onRemoveTodo={removeTodo}
-              fetchData={fetchData}
-            />
-          }
-        />
-      </Routes>
-      <nav>
-        <Link to="/">Home | </Link>
-        <Link to="/TodoList-Activities">All Activities</Link>
-      </nav>
-    </BrowserRouter>
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
+    <div className={style.container}>
+      <h1>Todo List</h1>
+      {message && <p>{message}</p>}
+      <button className={style.myCustomButton} onClick={toggleSortOrder}>
+        Sort: {isAscending ? "Ascending" : "Descending"}
+      </button>
+      <hr />
+      <AddTodoForm onAddTodo={addTodo} />
+      <br />
+      <TodoList
+        todoList={todoList}
+        onRemoveTodo={removeTodo}
+        fetchData={fetchData}
+      />
+    </div>
   );
 }
-export default TabContainer;
+export default TodoContainer;
