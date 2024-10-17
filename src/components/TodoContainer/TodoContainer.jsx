@@ -2,12 +2,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import TodoList from "../TodoList/TodoList";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import style from "./TodoContainer.module.css";
+import { useLocation } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function TodoContainer() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [isAscending, setIsAscending] = useState(true);
+  const [selectedItem, setSelectedItem] = useState("");
+  const location = useLocation();
 
   const fetchData = useCallback(async (priority = null) => {
     const options = {
@@ -43,19 +47,33 @@ function TodoContainer() {
       console.error(error.message);
     }
   }, []);
-
-  // Sort todoList when the order is toggled
-  const toggleSortOrder = () => {
-    setIsAscending((isAscending) => !isAscending);
-    setTodoList((todoList) =>
-      [...todoList].sort((objectA, objectB) => {
-        const timeA = new Date(objectA.createdTime).getTime();
-        const timeB = new Date(objectB.createdTime).getTime();
-        return isAscending ? timeB - timeA : timeA - timeB; // Switch between Ascending/Descending
-      })
-    );
+  const toggleSortOrder = (eventKey) => {
+    console.log(`Selected: ${eventKey}`);
+    setSelectedItem(eventKey);
+    if (eventKey === "Created Time") {
+      setIsAscending((isAscending) => !isAscending);
+      setTodoList((todoList) =>
+        [...todoList].sort((objectA, objectB) => {
+          const timeA = new Date(objectA.createdTime).getTime();
+          const timeB = new Date(objectB.createdTime).getTime();
+          return isAscending ? timeB - timeA : timeA - timeB; // Switch between Ascending/Descending
+        })
+      );
+    } else {
+      setIsAscending((isAscending) => !isAscending);
+      setTodoList((todoList) =>
+        [...todoList].sort((objectA, objectB) => {
+          const titleA = objectA.title.toLowerCase(); // Normalize to lowercase to avoid case-sensitive sorting
+          const titleB = objectB.title.toLowerCase();
+          if (isAscending) {
+            return titleA.localeCompare(titleB); // Ascending
+          } else {
+            return titleB.localeCompare(titleA); // Descending
+          }
+        })
+      );
+    }
   };
-
   const addTodo = async (newTodo) => {
     const formattedCompletedAt = new Date(newTodo.completedAt)
       .toISOString()
@@ -129,8 +147,12 @@ function TodoContainer() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (location.pathname === "/") {
+      fetchData("High"); // I am fetching the data on my AirTable with priority "High"
+    } else {
+      fetchData(); // I am fetching the data on my AirTable without any filter
+    }
+  }, [location, fetchData]);
 
   useEffect(() => {
     if (message) {
@@ -143,19 +165,39 @@ function TodoContainer() {
     <p>Loading...</p>
   ) : (
     <div className={style.container}>
-      <h1>Todo List</h1>
       {message && <p>{message}</p>}
-      <button className={style.myCustomButton} onClick={toggleSortOrder}>
-        Sort: {isAscending ? "Ascending" : "Descending"}
-      </button>
-      <hr />
-      <AddTodoForm onAddTodo={addTodo} />
-      <br />
-      <TodoList
-        todoList={todoList}
-        onRemoveTodo={removeTodo}
-        fetchData={fetchData}
-      />
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-6">
+            <Dropdown onSelect={toggleSortOrder}>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Sort {selectedItem} by :{" "}
+                {selectedItem ? (isAscending ? "Ascending" : "Descending") : ""}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item eventKey="Title">Title</Dropdown.Item>
+                <Dropdown.Item eventKey="Created Time">
+                  Created Time
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+          <div className="col-12 col-md-6">
+            <AddTodoForm onAddTodo={addTodo} />
+          </div>
+        </div>
+        <br />
+        <h1>Todo List</h1>
+        <div className="row">
+          <TodoList
+            todoList={todoList}
+            onRemoveTodo={removeTodo}
+            fetchData={fetchData}
+          />
+        </div>
+        <br />
+      </div>
     </div>
   );
 }

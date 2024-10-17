@@ -43,6 +43,7 @@ function AddTodoForm({ onAddTodo }) {
     setTodoTitle("");
     setTodoDetails("");
     setTodoPriority("Low");
+    handleClose();
   };
 
   return (
