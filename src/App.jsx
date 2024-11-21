@@ -1,12 +1,14 @@
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TodoList from "./components/TodoList/TodoList";
 import AddTodoForm from "./components/AddTodoForm/AddTodoForm";
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import style from "./styles/App.module.css";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
+  const [isAscending, setIsAscending] = useState(true);
 
   const fetchData = async () => {
     const options = {
@@ -22,8 +24,11 @@ function App() {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
+
+      // Store todos from fetched data
       const todos = data.records.map((record) => ({
         title: record.fields.title,
+        createdTime: record.createdTime, // Include createdTime
         id: record.id,
       }));
       setTodoList(todos);
@@ -33,16 +38,21 @@ function App() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
-  React.useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => setMessage(""), 2000); // Clear message after 3 seconds
-      return () => clearTimeout(timer); // Cleanup timer on unmount
-    }
-  }, [message]);
+  // Sort todoList when the order is toggled
+  const toggleSortOrder = () => {
+    setIsAscending((isAscending) => !isAscending);
+    setTodoList((todoList) =>
+      [...todoList].sort((objectA, objectB) => {
+        const timeA = new Date(objectA.createdTime).getTime();
+        const timeB = new Date(objectB.createdTime).getTime();
+        return isAscending ? timeB - timeA : timeA - timeB; // Switch between Ascending/Descending
+      })
+    );
+  };
 
   const addTodo = async (newTodo) => {
     const formattedCompletedAt = new Date(newTodo.completedAt)
@@ -71,9 +81,21 @@ function App() {
       const addedTodo = {
         title: data.fields.title,
         completedAt: data.fields.completedAt,
+        createdTime: data.createdTime, // Include createdTime
         id: data.id,
       };
-      setTodoList([...todoList, addedTodo]);
+
+      // Automatically sort the list after adding a new todo
+      setTodoList((todoList) => {
+        const updatedList = [...todoList, addedTodo].sort(
+          (objectA, objectB) => {
+            const timeA = new Date(objectA.createdTime).getTime();
+            const timeB = new Date(objectB.createdTime).getTime();
+            return isAscending ? timeA - timeB : timeB - timeA;
+          }
+        );
+        return updatedList;
+      });
       setMessage("Todo added successfully!");
     } catch (error) {
       setMessage(`Error adding todo: ${error.message}`);
@@ -101,6 +123,13 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setMessage(""), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -110,12 +139,20 @@ function App() {
             isLoading ? (
               <p>Loading...</p>
             ) : (
-              <center>
+              <div className={style.container}>
                 <h1>Todo List</h1>
                 {message && <p>{message}</p>}
+                <button
+                  className={style.myCustomButton}
+                  onClick={toggleSortOrder}
+                >
+                  Sort: {isAscending ? "Ascending" : "Descending"}
+                </button>
+                <hr />
                 <AddTodoForm onAddTodo={addTodo} />
+                <br />
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-              </center>
+              </div>
             )
           }
         />

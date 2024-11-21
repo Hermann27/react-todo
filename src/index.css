@@ -1,9 +1,9 @@
 body {
-  font-family: "Arial", sans-serif;
   background-image: url("/pngtree-office-desktop.jpg");
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 #root {
   margin-right: 45%;
