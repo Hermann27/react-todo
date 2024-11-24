@@ -12,8 +12,8 @@ function TodoListItem({
   return (
     <tr className={style.listItem}>
       <td className={style.tableCells}>{title}</td>
-      <td className={style.tableCells}>{details}</td>
-      <td className={style.tableCells}>{priority}</td>
+      <td className="table-primary">{details}</td>
+      <td className="table-warning">{priority}</td>
       <td className={style.tableCells}>{createdTime}</td>
       <td className={style.tableCells}>
         <button

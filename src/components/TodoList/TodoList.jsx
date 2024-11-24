@@ -1,14 +1,14 @@
 import TodoListItem from "../TodoListItem/TodoListItem";
-//import style from "./TodoList.module.css";
+import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
 import { format } from "date-fns";
 
 function TodoList({ todoList, onRemoveTodo, fetchData }) {
   return (
     <div className="table-responsive">
-      <table className="table">
-        <thead>
-          <tr>
+      <Table responsive="sm">
+        <thead className="table-light">
+          <tr className="table-dark table table-striped">
             <th>Title</th>
             <th>Tasks Details</th>
             <th>Priority Level</th>
@@ -29,7 +29,7 @@ function TodoList({ todoList, onRemoveTodo, fetchData }) {
             />
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }
