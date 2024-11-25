@@ -58,3 +58,6 @@ jobs:
             echo "npm start failed"
             exit 1
           fi
+      - name: Check server logs
+        run: |
+          cat server.log  # or the appropriate log file if it's not printing to console
