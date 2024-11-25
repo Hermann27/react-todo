@@ -1,0 +1,64 @@
+name: Build and Test React App
+
+on:
+  push:
+    branches: [Final-Project]
+  pull_request:
+    branches: [Final-Project]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22.2.0"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build
+
+      - name: Test application
+        run: npm run test -- --watch=false
+
+      - name: Start server in the background
+        run: |
+          npm start & 
+          echo $! > server.pid
+        env:
+          CI: true
+
+      - name: Check server logs
+        run: |
+          cat server.log  # or the appropriate log file if it's not printing to console
+
+      - name: Wait for server to start
+        run: |
+          echo "Waiting for server to start..."
+          for i in {1..10}; do
+            if curl -s http://localhost:3000 > /dev/null; then
+              echo "Server is up!"
+              break
+            fi
+            echo "Server not up yet, retrying in 1 second..."
+            sleep 1
+          done
+
+      - name: Test server with curl
+        run: |
+          echo "Testing server with curl..."
+          curl -f http://localhost:3000 || exit 1
+
+      - name: Check npm start
+        run: |
+          if ! npm start; then
+            echo "npm start failed"
+            exit 1
+          fi
