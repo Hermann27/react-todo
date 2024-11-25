@@ -28,16 +28,18 @@ jobs:
       - name: Test application
         run: npm run test -- --watch=false
 
-      - name: Start server
-        run: npm start &
+      - name: Start server in the background
+        run: |
+          npm start & 
+          echo $! > server.pid
         env:
           CI: true
 
       - name: Wait for server to start
         run: |
           echo "Waiting for server to start..."
-          for i in {1..30}; do
-            if curl -f http://localhost:3000; then
+          for i in {1..60}; do
+            if curl -s http://localhost:3000 > /dev/null; then
               echo "Server is up!"
               break
             fi
@@ -46,7 +48,9 @@ jobs:
           done
 
       - name: Test server with curl
-        run: curl -f http://localhost:3000 || exit 1
+        run: |
+          echo "Testing server with curl..."
+          curl -f http://localhost:3000 || exit 1
 
       - name: Check npm start
         run: |
