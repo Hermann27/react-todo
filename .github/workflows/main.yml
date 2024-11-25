@@ -25,11 +25,4 @@ jobs:
         run: npm run build
 
       - name: Test application
-<<<<<<< HEAD
         run: npm run test -- --watch=false
-
-      - name: Lint application
-        run: npm run lint
-=======
-        run: npm run test
->>>>>>> 86794c9f79f898937813a64f10765cc4752c974b
