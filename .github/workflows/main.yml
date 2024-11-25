@@ -35,6 +35,10 @@ jobs:
         env:
           CI: true
 
+      - name: Check server logs
+        run: |
+          cat server.log  # or the appropriate log file if it's not printing to console
+
       - name: Wait for server to start
         run: |
           echo "Waiting for server to start..."
@@ -46,10 +50,6 @@ jobs:
             echo "Server not up yet, retrying in 1 second..."
             sleep 1
           done
-
-      - name: Check server logs
-        run: |
-          cat server.log  # or the appropriate log file if it's not printing to console
 
       - name: Test server with curl
         run: |
