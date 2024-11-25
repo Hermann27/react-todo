@@ -2,8 +2,9 @@ name: Build and Test React App
 
 on:
   push:
-    branches:
-      - Final-Project
+    branches: [Final-Project]
+  pull_request:
+    branches: [Final-Project]
 
 jobs:
   build-and-test:
@@ -26,3 +27,21 @@ jobs:
 
       - name: Test application
         run: npm run test -- --watch=false
+
+      - name: Start server
+        run: npm start &
+        env:
+          CI: true
+
+      - name: Wait for server to start
+        run: sleep 10
+
+      - name: Test server with curl
+        run: curl -f http://localhost:3000 || exit 1
+
+      - name: Check npm start
+        run: |
+          if ! npm start; then
+            echo "npm start failed"
+            exit 1
+          fi
