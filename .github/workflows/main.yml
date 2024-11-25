@@ -6,7 +6,7 @@ on:
       - Final-Project
 
 jobs:
-  build-react:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,4 +25,7 @@ jobs:
         run: npm run build
 
       - name: Test application
-        run: npm test -- --watchAll=false
+        run: npm run test -- --watch=false
+
+      - name: Lint application
+        run: npm run lint
